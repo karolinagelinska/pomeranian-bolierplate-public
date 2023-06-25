@@ -1,0 +1,132 @@
+:root {
+  --primary: #fe3756;
+  --primary-light: #ffd5db;
+  --white: #ffffff;
+  --gray-200: #ebebeb;
+  --gray-300: #c8cbd1;
+  --gray-500: #999999;
+  --gray-900: #4b5563;
+}
+.exercise-wrapper {
+  font-family: 'Poppins', sans-serif;
+  width: 985px;
+  height: 1, 893px;
+}
+
+.button {
+  border: 1px solid var(--primary);
+  background-color: var(--primary-light);
+  border-radius: 20px;
+  width: 423px;
+  height: 94px;
+  font-size: 20px;
+  position: relative;
+  left: 280px;
+  top: -350px;
+}
+.snow-wolf-picture {
+  border-radius: 8px;
+  width: 402px;
+  height: 350px;
+  margin-left: 30px;
+  position: relative;
+  top: -430px;
+}
+.first-container {
+  font-size: 22px;
+  clear: right;
+  margin-bottom: 50px;
+}
+.first-container p:last-child {
+  position: relative;
+  right: -25px;
+}
+.main-container {
+  text-align: justify;
+  font-size: 22px;
+  line-height: 36px;
+  position: relative;
+  padding-top: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+}
+.main-container.third-container {
+  background-color: var(--gray-200);
+  height: 100px;
+  padding-left: 25px;
+  clear: right;
+  top: -150px;
+}
+.main-container.fourth-container {
+  background-color: var(--primary-light);
+  height: 250px;
+  padding-left: 485px;
+  top: -140px;
+}
+.main-container.sixth-container {
+  background-color: var(--gray-900);
+  color: var(--white);
+  height: 120px;
+  padding-left: 25px;
+  top: -400px;
+}
+.main-container.seventh-container {
+  height: 468px;
+  margin-bottom: 100px;
+  top: -350px;
+}
+.side-container {
+  float: right;
+  background-color: var(--primary-light);
+  border: 1px solid var(--gray-500);
+  border-radius: 6px;
+  text-align: center;
+  padding-top: 10px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  line-height: 30px;
+  position: relative;
+}
+.side-container.second-container {
+  width: 200px;
+  height: 110px;
+  left: 160px;
+  top: -70px;
+  z-index: 1;
+  clear: none;
+}
+.side-container.fifth-container {
+  width: 80px;
+  height: 60px;
+  left: 140px;
+  z-index: 1;
+  top: -130px;
+}
+.rectangle {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  margin-left: 50px;
+  position: relative;
+}
+.first-rectangle.rectangle {
+  background-color: var(--gray-900);
+  border: 2px solid var(--gray-300);
+  left: 40px;
+  top: -400px;
+  z-index: 2;
+}
+.second-rectangle.rectangle {
+  background-color: var(--gray-500);
+  border: 2px solid var(--gray-200);
+  left: 20px;
+  top: -500px;
+  z-index: 1;
+}
+.third-rectangle.rectangle {
+  background-color: var(--gray-300);
+  border: 2px solid var(--gray-200);
+  top: -600px;
+}
