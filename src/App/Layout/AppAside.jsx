@@ -44,15 +44,15 @@ export function AppAside() {
             </NavLink>
           </li>
           <li>
-            <NavLink className="aside-row" to="Settings">
-              <SettingIcon className="menu-icon" />
-              Ustawienia
-            </NavLink>
-          </li>
-          <li>
             <NavLink className="aside-row" to="FAQ">
               <FAQIcon className="menu-icon" />
               FAQ
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className="aside-row" to="Settings">
+              <SettingIcon className="menu-icon" />
+              Ustawienia
             </NavLink>
           </li>
         </ul>
