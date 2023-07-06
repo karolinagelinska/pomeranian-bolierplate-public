@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './styles.css';
 
 export const MoleGameSettings = ({
@@ -7,7 +7,6 @@ export const MoleGameSettings = ({
   moleAmount,
   setMoleAmount,
   setIsActive,
-  startTimer,
 }) => {
   const gameTimeOption = [
     { label: '1 minuta', timeValue: 1 * 60 * 1000 },
@@ -35,7 +34,6 @@ export const MoleGameSettings = ({
                 className={gameTime === timeValue ? 'activeButton' : ''}
                 onClick={() => {
                   setGameTime(timeValue);
-                  setIsActive(false);
                 }}
               >
                 {label}
@@ -57,7 +55,7 @@ export const MoleGameSettings = ({
           </div>
           <div>
             <h4>PRZYCISKI STERUJĄCE</h4>
-            <button onClick={startTimer}>START</button>
+            <button>START</button>
           </div>
         </div>
       </div>
