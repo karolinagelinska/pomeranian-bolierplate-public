@@ -3,6 +3,7 @@ import { getParsedRouterDataList } from '../../router-data/parseRouterData';
 import { blockRouterMetaData as blockRouterMetaDataJsVariables1 } from './Exercise-js-variables-1/router-data';
 import { blockRouterMetaData as blockRouterMetaDataJsVariables2 } from './Exercise-js-variables-2/router-data';
 import { blockRouterMetaData as blockRouterMetaDataJsFunction1 } from './Exercise-js-functions/router-data';
+import { blockRouterMetaData as blockRouterMetaDataHitTheMoleGame } from './HitTheMoleGame/router-data';
 import { castingAndStringsMetaData } from './CastingandStrings/router-data';
 import { jsArraysBasicsMetaData } from './JsArraysBasics/router-data';
 import { timeMetaData } from './Time/router-data';
@@ -14,5 +15,6 @@ export const blockRouterMetaData = [
   castingAndStringsMetaData,
   jsArraysBasicsMetaData,
   timeMetaData,
+  blockRouterMetaDataHitTheMoleGame,
 ];
 export const blockRouterData = getParsedRouterDataList(blockRouterMetaData);
