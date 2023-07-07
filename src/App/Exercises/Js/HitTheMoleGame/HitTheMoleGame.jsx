@@ -4,12 +4,39 @@ import { MoleGameBoard } from './MoleGameBoard';
 import { MoleGameSettings } from './MoleGameSettings';
 
 export const HitTheMoleGame = () => {
-  const defaultGameTime = 2 * 60 * 1000;
-  const [gameTime, setGameTime] = useState(defaultGameTime);
+  const DEFAULT_GAME_TIME = 2 * 60 * 1000;
+  const [gameTime, setGameTime] = useState(DEFAULT_GAME_TIME);
   const [moleAmount, setMoleAmount] = useState(1);
   const [scoreCount, setScoreCount] = useState(0);
-  const [seconds, setSeconds] = useState(defaultGameTime);
+  const [seconds, setSeconds] = useState(DEFAULT_GAME_TIME);
   const [isActive, setIsActive] = useState(false);
+  const [moleArray, setMoleArray] = useState(
+    Array(10).fill({ isVisible: false, isWhacked: false })
+  );
+  const moleSpeed = 1000;
+  useEffect(() => {
+    let intervalId;
+
+    if (!intervalId) {
+      intervalId = setInterval(() => {
+        setSeconds(seconds - 1);
+      }, 1000);
+
+      return () => clearInterval(intervalId);
+    }
+  }, [gameTime]);
+
+  useEffect(() => {
+    let intervalId;
+
+    if (!intervalId) {
+      intervalId = setInterval(() => {
+        MoleCall();
+      }, moleSpeed);
+
+      return () => clearInterval(intervalId);
+    }
+  }, [gameTime]);
 
   const StartTimer = () => {
     setSeconds(seconds - 1);
@@ -28,9 +55,7 @@ export const HitTheMoleGame = () => {
       return () => clearInterval(interval);
     }, [seconds]);
   };
-  const [moleArray, setMoleArray] = useState(
-    Array(10).fill({ isVisible: false, isWhacked: false })
-  );
+
   const MoleCall = () => {
     function getRandomInt(min, max) {
       min = Math.ceil(min);
@@ -38,7 +63,6 @@ export const HitTheMoleGame = () => {
       return Math.floor(Math.random() * (max - min + 1) + min);
     }
     const randomIndex = getRandomInt(0, moleArray.length - 1);
-    console.log(randomIndex);
 
     setMoleArray((prevMoleArray) =>
       prevMoleArray.map((mole, index) => {
@@ -48,13 +72,22 @@ export const HitTheMoleGame = () => {
         return newMole;
       })
     );
-    console.log(moleArray);
   };
 
   const hitTheMole = (index) => {
-    if (!moleArray[index].isVisible) return;
-    moleArray[index].isWhacked = !moleArray[index].isWhacked;
+    if (moleArray[index].isVisible) {
+      setScoreCount(scoreCount + 1);
+
+      setMoleArray((prevVal) => {
+        const newArray = [...prevVal];
+
+        newArray[index].isVisible = false;
+
+        return newArray;
+      });
+    }
   };
+
   return (
     <div>
       <MoleGameSettings
@@ -69,7 +102,6 @@ export const HitTheMoleGame = () => {
         hitTheMole={hitTheMole}
         scoreCount={scoreCount}
       />
-      <button onClick={() => MoleCall()}>Click me</button>
     </div>
   );
 };

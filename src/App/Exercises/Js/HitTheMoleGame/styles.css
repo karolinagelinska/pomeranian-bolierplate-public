@@ -35,3 +35,27 @@
   background: #fe3756;
   border-color: #fe3756;
 }
+.moleGame .board {
+  width: 550px;
+  height: 210px;
+  background-color: #ffffff;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  border: 5px solid #ffffff;
+  gap: 5px;
+}
+.moleGame .board .square {
+  border-radius: 8px;
+  background-color: #ebebeb;
+}
+.moleGame .moleGameSettings .scoreDisplay {
+  width: 120px;
+  height: 56px;
+  border-radius: 8px;
+  border: 1px;
+  gap: 16px;
+  background-color: #ebebeb;
+  font-size: 22px;
+  text-align: center;
+}
