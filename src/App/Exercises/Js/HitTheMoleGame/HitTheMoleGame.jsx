@@ -3,10 +3,26 @@ import './styles.css';
 import { MoleGameBoard } from './MoleGameBoard';
 import { MoleGameSettings } from './MoleGameSettings';
 const CountdownTimer = ({ seconds }) => {
-  return <h4> DO KOŃCA: {seconds} </h4>;
+  return (
+    <div>
+      <h4>
+        DO KOŃCA <div className="scoreDisplay">{seconds}</div>
+      </h4>
+    </div>
+  );
 };
+const ScoreCounter = ({ scoreCount }) => {
+  return (
+    <div>
+      <h4>
+        WYNIK <div className="scoreDisplay">{scoreCount}</div>
+      </h4>
+    </div>
+  );
+};
+
 export const HitTheMoleGame = () => {
-  const DEFAULT_GAME_TIME = 2 * 60 * 1000;
+  const DEFAULT_GAME_TIME = 2 * 1000;
   const [gameTime, setGameTime] = useState(DEFAULT_GAME_TIME);
   const [moleAmount, setMoleAmount] = useState(1);
   const [scoreCount, setScoreCount] = useState(0);
@@ -15,17 +31,23 @@ export const HitTheMoleGame = () => {
   const [moleArray, setMoleArray] = useState(
     Array(10).fill({ isVisible: false, isWhacked: false })
   );
+  const [endGameMessage, setEndGameMessage] = useState(false);
   const moleSpeed = 1000;
   useEffect(() => {
-    if (!seconds) return;
+    if (!isActive && seconds === 0) setEndGameMessage(true);
+  }, [isActive, seconds]);
+  useEffect(() => {
     let intervalId;
     if (!intervalId && isActive) {
       intervalId = setInterval(() => {
         setSeconds((prevSeconds) => prevSeconds - 1);
       }, 1000);
     }
+    if (seconds === 0) {
+      setIsActive(false);
+    }
     return () => clearInterval(intervalId);
-  }, [isActive]);
+  }, [isActive, seconds]);
 
   useEffect(() => {
     if (!isActive) setSeconds(gameTime / 1000);
@@ -42,7 +64,6 @@ export const HitTheMoleGame = () => {
       return () => clearInterval(intervalId);
     }
   }, [gameTime]);
-  //Timer
 
   const MoleCall = () => {
     function getRandomInt(min, max) {
@@ -62,9 +83,6 @@ export const HitTheMoleGame = () => {
     );
   };
 
-  // if (scoreCount >= 20) return Gratulacje! Zdobyłeś x punktów
-  // else if (seconds === 0) return Gratulacje! Zdobyłeś x punktów
-
   const hitTheMole = (index) => {
     if (moleArray[index].isVisible) {
       setScoreCount(scoreCount + 1);
@@ -81,18 +99,26 @@ export const HitTheMoleGame = () => {
 
   return (
     <div>
-      <MoleGameSettings
-        gameTime={gameTime}
-        setGameTime={setGameTime}
-        moleAmount={moleAmount}
-        setMoleAmount={setMoleAmount}
-        startGame={() => setIsActive(true)}
-        isActive={isActive}
-      />
+      {!isActive ? (
+        <MoleGameSettings
+          gameTime={gameTime}
+          setGameTime={setGameTime}
+          moleAmount={moleAmount}
+          setMoleAmount={setMoleAmount}
+          startGame={() => {
+            setIsActive(!isActive);
+            setScoreCount(0);
+          }}
+          isActive={isActive}
+          endGameMessage={endGameMessage}
+          scoreCount={scoreCount}
+        />
+      ) : null}
 
       {isActive ? (
         <>
           <CountdownTimer seconds={seconds} />
+          <ScoreCounter scoreCount={scoreCount} />
           <MoleGameBoard
             moleArray={moleArray}
             hitTheMole={hitTheMole}
