@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './styles.css';
 import { MoleGameBoard } from './MoleGameBoard';
 import { MoleGameSettings } from './MoleGameSettings';
-
+const CountdownTimer = ({ seconds }) => {
+  return <h4> DO KOŃCA: {seconds} </h4>;
+};
 export const HitTheMoleGame = () => {
   const DEFAULT_GAME_TIME = 2 * 60 * 1000;
   const [gameTime, setGameTime] = useState(DEFAULT_GAME_TIME);
@@ -15,16 +17,19 @@ export const HitTheMoleGame = () => {
   );
   const moleSpeed = 1000;
   useEffect(() => {
+    if (!seconds) return;
     let intervalId;
-
-    if (!intervalId) {
+    if (!intervalId && isActive) {
       intervalId = setInterval(() => {
-        setSeconds(seconds - 1);
+        setSeconds((prevSeconds) => prevSeconds - 1);
       }, 1000);
-
-      return () => clearInterval(intervalId);
     }
-  }, [gameTime]);
+    return () => clearInterval(intervalId);
+  }, [isActive]);
+
+  useEffect(() => {
+    if (!isActive) setSeconds(gameTime / 1000);
+  }, [isActive, gameTime]);
 
   useEffect(() => {
     let intervalId;
@@ -37,24 +42,7 @@ export const HitTheMoleGame = () => {
       return () => clearInterval(intervalId);
     }
   }, [gameTime]);
-
-  const StartTimer = () => {
-    setSeconds(seconds - 1);
-    setIsActive(!isActive);
-
-    useEffect(() => {
-      setSeconds(gameTime / 1000);
-    }, [gameTime]);
-    useEffect(() => {
-      let interval;
-      if (isActive) {
-        interval = setInterval(() => {
-          setSeconds(seconds - 1);
-        }, 1000);
-      }
-      return () => clearInterval(interval);
-    }, [seconds]);
-  };
+  //Timer
 
   const MoleCall = () => {
     function getRandomInt(min, max) {
@@ -74,12 +62,15 @@ export const HitTheMoleGame = () => {
     );
   };
 
+  // if (scoreCount >= 20) return Gratulacje! Zdobyłeś x punktów
+  // else if (seconds === 0) return Gratulacje! Zdobyłeś x punktów
+
   const hitTheMole = (index) => {
     if (moleArray[index].isVisible) {
       setScoreCount(scoreCount + 1);
 
-      setMoleArray((prevVal) => {
-        const newArray = [...prevVal];
+      setMoleArray((prevValue) => {
+        const newArray = [...prevValue];
 
         newArray[index].isVisible = false;
 
@@ -95,13 +86,20 @@ export const HitTheMoleGame = () => {
         setGameTime={setGameTime}
         moleAmount={moleAmount}
         setMoleAmount={setMoleAmount}
+        startGame={() => setIsActive(true)}
+        isActive={isActive}
       />
 
-      <MoleGameBoard
-        moleArray={moleArray}
-        hitTheMole={hitTheMole}
-        scoreCount={scoreCount}
-      />
+      {isActive ? (
+        <>
+          <CountdownTimer seconds={seconds} />
+          <MoleGameBoard
+            moleArray={moleArray}
+            hitTheMole={hitTheMole}
+            scoreCount={scoreCount}
+          />
+        </>
+      ) : null}
     </div>
   );
 };

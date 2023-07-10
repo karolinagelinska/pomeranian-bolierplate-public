@@ -11,8 +11,7 @@ export const MoleGameBoard = ({
   return (
     <div className="moleGame">
       <div className="moleGameSettings">
-        CZAS DO KOŃCA
-        <div className="scoreDisplay">{seconds}</div>
+        CZAS DO KOŃCA<div className="scoreDisplay">{seconds} </div>
       </div>
       <div className="moleGameSettings">
         WYNIK <div className="scoreDisplay">{scoreCount}</div>{' '}
@@ -22,7 +21,7 @@ export const MoleGameBoard = ({
           return (
             <span className="square">
               {mole.isVisible ? (
-                <img onClick={() => hitTheMole(index)} src={Mole} />
+                <img onClick={() => hitTheMole(index)} src={Mole} alt="mole" />
               ) : null}
             </span>
           );

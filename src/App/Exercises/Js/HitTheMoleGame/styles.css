@@ -37,7 +37,7 @@
 }
 .moleGame .board {
   width: 550px;
-  height: 210px;
+  height: 220px;
   background-color: #ffffff;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
