@@ -3,10 +3,23 @@ import './styles.css';
 import { MoleGameBoard } from './MoleGameBoard';
 import { MoleGameSettings } from './MoleGameSettings';
 const CountdownTimer = ({ seconds }) => {
+  const minutes = () => {
+    let minutes = Math.floor(seconds / 60);
+    if (minutes < 10) return (minutes = '0' + minutes);
+    else return minutes;
+  };
+  const extraSeconds = () => {
+    let extraSeconds = seconds % 60;
+    if (extraSeconds < 10) return (extraSeconds = '0' + extraSeconds);
+    else return extraSeconds;
+  };
   return (
     <div>
       <h4>
-        DO KOŃCA <div className="scoreDisplay">{seconds}</div>
+        DO KOŃCA
+        <div className="scoreDisplay">
+          {minutes(minutes)}:{extraSeconds(extraSeconds)}
+        </div>
       </h4>
     </div>
   );
