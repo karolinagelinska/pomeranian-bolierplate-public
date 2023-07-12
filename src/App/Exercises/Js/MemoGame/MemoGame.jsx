@@ -34,6 +34,7 @@ const MoveCounter = ({ moveCounter }) => {
     </div>
   );
 };
+
 export const MemoGame = () => {
   const [numberOfTiles, setNumberOfTiles] = useState(8);
   const [gameIsActive, setGameIsActive] = useState(false);
@@ -59,6 +60,41 @@ export const MemoGame = () => {
     setMoveCounter((prevValue) => prevValue + 1);
   };
 
+  const letterArray = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'R',
+    'S',
+    'T',
+    'U',
+    'W',
+    'X',
+    'Y',
+    'Z',
+  ];
+  const getRandomLetters = () => {
+    const properSizeLetterArray = [...letterArray].slice(0, numberOfTiles / 2);
+    const shuffledLetterArray = [
+      ...properSizeLetterArray,
+      ...properSizeLetterArray,
+    ].sort(() => 0.5 - Math.random());
+    setTileArray(shuffledLetterArray);
+  };
+  const revealTile = () => {};
   return (
     <div>
       {!gameIsActive ? (
@@ -69,6 +105,7 @@ export const MemoGame = () => {
             setGameIsActive(!gameIsActive);
             setMoveCounter(0);
             setSeconds(0);
+            getRandomLetters();
           }}
         />
       ) : null}

@@ -1,7 +1,11 @@
 import React from 'react';
 import './styles.css';
 
-export const MemoGameBoard = ({ tileArray, handleTileClick }) => {
+export const MemoGameBoard = ({
+  tileArray,
+  handleTileClick,
+  tileIsVisible,
+}) => {
   return (
     <div className="gameBoard">
       {tileArray.map((tile) => {

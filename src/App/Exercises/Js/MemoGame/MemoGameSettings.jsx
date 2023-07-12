@@ -3,7 +3,7 @@ export const MemoGameSettings = ({
   numberOfTiles,
   setNumberOfTiles,
   startGame,
-  setGameIsActive,
+  gameIsActive,
 }) => {
   const numberOfTilesOption = [
     { label: '8 elementów', value: 8 },
@@ -30,7 +30,9 @@ export const MemoGameSettings = ({
         ))}
 
         <h4>PRZYCISKI STERUJĄCE</h4>
-        <button onClick={startGame}>START</button>
+        <button onClick={startGame}>
+          {!gameIsActive ? 'START' : 'RESTART'}
+        </button>
       </div>
     </div>
   );
