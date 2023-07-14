@@ -4,10 +4,11 @@ import './styles.css';
 export const MemoGameBoard = ({ tileArray, handleTileClick }) => {
   return (
     <div className="gameBoard">
-      {tileArray.map((tile) => {
+      {tileArray.map((letterObject) => {
         return (
           <span className="square" onClick={() => handleTileClick()}>
-            {tile.isVisible ? tile.value : null}
+            {(letterObject.isGuessed || letterObject.isVisible) &&
+              letterObject.value}
           </span>
         );
       })}

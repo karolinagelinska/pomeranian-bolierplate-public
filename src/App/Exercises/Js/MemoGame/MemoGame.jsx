@@ -73,6 +73,16 @@ export const MemoGame = () => {
   const [secondCheckedTile, setSecondCheckedTile] = useState(null);
 
   useEffect(() => {
+    let intervalId;
+    if (!intervalId && gameIsActive) {
+      intervalId = setInterval(() => {
+        setSeconds((prevSeconds) => prevSeconds + 1);
+      }, 1000);
+    }
+    return () => clearInterval(intervalId);
+  }, [gameIsActive, seconds]);
+
+  useEffect(() => {
     if (!gameIsActive) {
       const properSizeLetterArray = [...letterArray].slice(
         0,
@@ -96,16 +106,6 @@ export const MemoGame = () => {
       );
     }
   }, [numberOfTiles, gameIsActive]);
-
-  useEffect(() => {
-    let intervalId;
-    if (!intervalId && gameIsActive) {
-      intervalId = setInterval(() => {
-        setSeconds((prevSeconds) => prevSeconds + 1);
-      }, 1000);
-    }
-    return () => clearInterval(intervalId);
-  }, [gameIsActive, seconds]);
 
   useEffect(() => {
     const first = tileArray.find(
@@ -147,7 +147,7 @@ export const MemoGame = () => {
       }, 2000);
     }
     return () => clearTimeout(timeout);
-  }, [tileArray, firstCheckedTile, secondCheckedTile]);
+  }, [firstCheckedTile, secondCheckedTile]);
 
   const handleTileClick = (letterObject) => {
     if (letterObject.id === firstCheckedTile || letterObject.isGuessed) return;
@@ -158,6 +158,7 @@ export const MemoGame = () => {
     if (typeof secondCheckedTile !== 'number') {
       setMoveCounter(moveCounter + 1);
       setSecondCheckedTile(letterObject.id);
+      console.log(letterObject);
       return;
     }
     setSecondCheckedTile(null);
