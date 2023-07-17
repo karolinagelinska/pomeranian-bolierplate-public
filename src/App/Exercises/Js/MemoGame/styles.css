@@ -1,0 +1,42 @@
+.memoGameSettings {
+  width: 75%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 25px;
+  grid-row-gap: 25px;
+}
+.memoGameSettings button {
+  border: 1px solid #23213d;
+  border-radius: 8px;
+  background-color: #23213d;
+  color: #ffff;
+  font-size: 22px;
+}
+.square {
+}
+.memoGameSettings button:hover {
+  cursor: pointer;
+  background: #fe3756;
+  border-color: #fe3756;
+}
+.memoGameSettings .activeButton {
+  background: #fe3756;
+  border-color: #fe3756;
+}
+.gameBoard {
+  width: 50%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+.gameBoard .square {
+  border-radius: 8px;
+  background-color: #ebebeb;
+  width: 150px;
+  height: 150px;
+  font-size: 100px;
+  text-align: center;
+}

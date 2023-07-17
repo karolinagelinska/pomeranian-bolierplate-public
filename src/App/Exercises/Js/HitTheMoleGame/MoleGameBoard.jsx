@@ -1,16 +1,23 @@
 import React from 'react';
 import Mole from '../../../Images/Mole.svg';
+import molehole from '../../../Images/molehole.svg';
+import './styles.css';
 
-export const MoleGameBoard = ({ moleArray, hitTheMole, scoreCount }) => {
+export const MoleGameBoard = ({ moleArray, hitTheMole }) => {
   return (
-    <div>
-      Obecny wynik: {scoreCount} punktów
-      <div>
+    <div className="moleGame">
+      <div className="board">
         {moleArray.map((mole, index) => {
           return (
-            <span>
+            <span className="square">
+              <img src={molehole} />
               {mole.isVisible ? (
-                <img onClick={() => hitTheMole(index)} src={Mole} />
+                <img
+                  className="mole"
+                  onClick={() => hitTheMole(index)}
+                  src={Mole}
+                  alt="mole"
+                />
               ) : null}
             </span>
           );

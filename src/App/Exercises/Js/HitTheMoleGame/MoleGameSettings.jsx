@@ -6,7 +6,9 @@ export const MoleGameSettings = ({
   setGameTime,
   moleAmount,
   setMoleAmount,
-  setIsActive,
+  startGame,
+  scoreCount,
+  endGameMessage,
 }) => {
   const gameTimeOption = [
     { label: '1 minuta', timeValue: 1 * 60 * 1000 },
@@ -21,14 +23,16 @@ export const MoleGameSettings = ({
 
   return (
     <>
-      <p className="gameDescription">
-        Gra polegająca na podążaniu za krecikiem i trafieniu na kwadrat, w
-        którym się pojawił.
-      </p>
+      <h4 className="gameDescription">
+        {endGameMessage === false
+          ? `Gra polegająca na podążaniu za krecikiem i trafieniu na kwadrat, w
+        którym się pojawił.`
+          : `Gratulacje! Twój wynik to ${scoreCount} punkty`}
+      </h4>
       <div className="moleGameSettings">
         <div className="settingsContainer">
           <div>
-            <h4>CZAS GRY</h4>
+            <h4 className="rowName">CZAS GRY</h4>
             {gameTimeOption.map(({ label, timeValue }) => (
               <button
                 className={gameTime === timeValue ? 'activeButton' : ''}
@@ -41,7 +45,7 @@ export const MoleGameSettings = ({
             ))}
           </div>
           <div>
-            <h4>LICZBA KRETÓW</h4>
+            <h4 className="rowName">LICZBA KRETÓW</h4>
             {moleAmountOption.map(({ label }) => (
               <button
                 className={
@@ -54,8 +58,8 @@ export const MoleGameSettings = ({
             ))}
           </div>
           <div>
-            <h4>PRZYCISKI STERUJĄCE</h4>
-            <button>START</button>
+            <h4 className="rowName">PRZYCISKI STERUJĄCE</h4>
+            <button onClick={() => startGame()}>START</button>
           </div>
         </div>
       </div>
