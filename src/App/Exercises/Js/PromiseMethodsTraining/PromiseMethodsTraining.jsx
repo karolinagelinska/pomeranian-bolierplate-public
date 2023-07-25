@@ -1,4 +1,5 @@
 import './styles.css';
+import { ExerciseUsingServer } from './ExerciseUsingServer';
 
 export const PromiseMethodsTraining = () => {
   const fetchDataFast = () =>
@@ -19,6 +20,7 @@ export const PromiseMethodsTraining = () => {
         reject(new Error('Błąd pobierania danych'));
       }, 500)
     );
+
   const cb = (log) => {
     if (log.status === 'rejected') {
       console.error(log?.reason?.stack);
@@ -101,6 +103,7 @@ export const PromiseMethodsTraining = () => {
       >
         Get any with error
       </button>
+      <ExerciseUsingServer />
     </div>
   );
 };
