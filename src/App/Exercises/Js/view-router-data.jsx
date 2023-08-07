@@ -1,5 +1,6 @@
 import { getParsedRouterDataList } from '../../router-data/parseRouterData';
 
+import { blockRouterMetaData as blockRouterMetaDataPromiseMethodsTraining } from './PromiseMethodsTraining/router-data';
 import { blockRouterMetaData as blockRouterMetaDataJsThis } from './jsThis/router-data';
 import { blockRouterMetaData as blockRouterMetaDataPrototype } from './Exercise-js-prototype/router-data';
 import { blockRouterMetaData as blockRouterMetaDataTryCatchAndFinally } from './Exercsie-js-try-catch/router-data';
@@ -14,6 +15,7 @@ import { jsArraysBasicsMetaData } from './JsArraysBasics/router-data';
 import { timeMetaData } from './Time/router-data';
 
 export const blockRouterMetaData = [
+  blockRouterMetaDataPromiseMethodsTraining,
   blockRouterMetaDataJsThis,
   blockRouterMetaDataPrototype,
   blockRouterMetaDataTryCatchAndFinally,
