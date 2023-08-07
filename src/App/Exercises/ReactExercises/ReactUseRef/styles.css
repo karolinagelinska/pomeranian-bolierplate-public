@@ -1,0 +1,22 @@
+.container--react-usse-ref input:focus {
+  background-color: red;
+}
+.container--react-usse-ref {
+  display: flex;
+  flex-direction: column;
+}
+.container--react-usse-ref label {
+  margin-top: 10px;
+}
+.container--react-usse-ref input {
+  width: 200px;
+  height: 20px;
+  border: 2px solid gray;
+  border-radius: 2px;
+}
+.container--react-scroll-into-view {
+  margin-top: 2000px;
+  width: 100%;
+  height: 200px;
+  background-color: aqua;
+}
