@@ -5,8 +5,10 @@ import { blockRouterMetaData as blockRouterMetaDataToDoWithServer } from './ToDo
 import { Block9MetaData } from './Block9/router-data';
 import { MaterialUIMetaData } from './MaterialUIBasicElements/router-data';
 import { blockRouterMetaData as blockRouterDataReactUseRef } from './ReactUseRef/router-data';
+import { blockRouterMetaData as blockRouterDataForms } from './Forms/router-data';
 
 export const blockRouterMetaData = [
+  blockRouterDataForms,
   blockRouterDataReactUseRef,
   blockRouterMetaDataToDoWithServer,
   blockRouterMetaDataLocalDevAndFetch,
