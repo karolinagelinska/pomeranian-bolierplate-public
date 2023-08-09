@@ -1,6 +1,9 @@
 .select-and-input {
   border: 1px solid #c8cbd1;
-  padding: 13px, 16px, 13px, 16px;
+  height: 48px;
+  width: 488px;
+  font-size: 18px;
+  color: #999999;
 }
 .input-radio {
   display: block;
