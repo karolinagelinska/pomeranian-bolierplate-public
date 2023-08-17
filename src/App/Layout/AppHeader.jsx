@@ -9,10 +9,13 @@ import cogwheel from '../Images/setting.svg';
 
 export function AppHeader() {
   return (
-    <header className="logo">
-      <Link to="/">
-        <Logo />
-      </Link>
+    <header>
+      <div className="logo">
+        <Link to="/">
+          <Logo />
+        </Link>
+      </div>
+
       <div className="menu">
         <button
           className="settings"

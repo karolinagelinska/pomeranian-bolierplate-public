@@ -1,10 +1,10 @@
 import './styles.css';
 
-export const FieldSection = ({ title, children }) => {
+export function FieldSection({ title, children }) {
   return (
     <div className="field-section">
-      <h4>{title}</h4>
+      <div className="field-section__title">{title}</div>
       {children}
     </div>
   );
-};
+}

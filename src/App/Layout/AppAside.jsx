@@ -10,31 +10,13 @@ import { FAQIcon } from '../Components/Icons/FAQIcon.jsx';
 
 export function AppAside() {
   return (
-    <aside>
+    <aside className="sidebar">
       <nav>
         <ul>
           <li>
-            <NavLink className="aside-row" to="dashboard">
+            <NavLink className="aside-row" to="Dashboard">
               <HouseIcon className="menu-icon" />
               Dashboard
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className="aside-row" to="blocks">
-              <ElementIcon className="menu-icon" />
-              Bloki
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className="aside-row" to="exercises">
-              <EditIcon className="menu-icon" />
-              Ćwiczenia
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className="aside-row" to="Blog">
-              <EditIcon className="menu-icon" />
-              Blog
             </NavLink>
           </li>
           <li>
@@ -44,11 +26,43 @@ export function AppAside() {
             </NavLink>
           </li>
           <li>
+            <NavLink className="aside-row" to="TechStack">
+              <HouseIcon className="menu-icon" />
+              Tech-stack
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink className="aside-row" to="Exercises">
+              <EditIcon className="menu-icon" />
+              Ćwiczenia
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className="aside-row" to="HitTheMoleGame">
+              <FAQIcon className="menu-icon" />
+              Gra | kret
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className="aside-row" to="MemoGame">
+              <FAQIcon className="menu-icon" />
+              Gra | memo
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className="aside-row" to="Form">
+              <FAQIcon className="menu-icon" />
+              Formularz
+            </NavLink>
+          </li>
+          <li>
             <NavLink className="aside-row" to="FAQ">
               <FAQIcon className="menu-icon" />
               FAQ
             </NavLink>
           </li>
+          <p className="separating-line"></p>
           <li>
             <NavLink className="aside-row" to="Settings">
               <SettingIcon className="menu-icon" />
@@ -57,7 +71,6 @@ export function AppAside() {
           </li>
         </ul>
       </nav>
-      <p style={{ padding: '1rem 0' }}></p>
     </aside>
   );
 }

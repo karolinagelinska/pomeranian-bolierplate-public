@@ -2,25 +2,24 @@ import './styles.css';
 import { MainSection } from './MainSection/MainSection';
 import { FieldSection } from './FieldSection/FieldSection';
 import { RadioButtons } from './RadioButtons/RadioButtons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Checkboxes } from './Checkboxes/Checkboxes';
 
 const validateEmail = (value) => {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
   return emailPattern.test(value);
 };
 
 const productOptions = [
-  { value: 'front-end', label: 'kurs front-end' },
-  { value: 'back-end', label: 'kurs back-end' },
+  { value: 'frontend', label: 'kurs front-end' },
+  { value: 'backend', label: 'kurs backend-end' },
   { value: 'devops', label: 'kurs devops' },
 ];
 
 const paymentTypeOptions = [
   { value: 'blik', label: 'Blik' },
   { value: 'paypal', label: 'PayPal' },
-  { value: 'transfer', label: 'przelew tradycyjny' },
+  { value: 'transfer', label: 'Przelew tradycyjny' },
 ];
 
 const additionalOptionList = [
@@ -37,8 +36,7 @@ const requiredFields = [
   'consents',
 ];
 
-export const FormExercise = () => {
-  const [product, setProduct] = useState('devops');
+export function FormExercise() {
   const [formData, setFormData] = useState({
     product: 'devops',
     paymentType: 'paypal',
@@ -52,10 +50,12 @@ export const FormExercise = () => {
     details: '',
     consents: false,
   });
+
   const [isAllRequiredFieldsFilled, setIsAllRequiredFieldsFilled] =
     useState(true);
 
   const [isEmailValid, setIsEmailValid] = useState();
+  const [orderId, setOrderId] = useState();
 
   const isNameAndSurnameValid =
     formData.nameAndSurname.length > 0
@@ -76,24 +76,28 @@ export const FormExercise = () => {
     });
   }
 
-  const updateFormData = (onChangeEvent) => {
+  function updateFormData(onChangeEvent) {
+    setIsAllRequiredFieldsFilled(true);
     setFormData({
       ...formData,
       [onChangeEvent.target.name]: onChangeEvent.target.value,
     });
-  };
+  }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     const { nameAndSurname, email, product, paymentType, consents } = formData;
     if (nameAndSurname && email && product && paymentType && consents) {
-      console.log('DANE WYSŁANE POPRAWNIE: ', formData);
+      try {
+      } catch (e) {
+        console.error('Error adding document: ', e);
+      }
     } else {
       setIsAllRequiredFieldsFilled(false);
     }
   }
 
   return (
-    <div>
+    <>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -102,19 +106,21 @@ export const FormExercise = () => {
       >
         <MainSection title="ZAMÓWIENIE PRODUKTU">
           <FieldSection title="Wybierz produkt*">
-            <select
-              name="product"
-              value={formData.product}
-              onChange={(event) => {
-                updateFormData(event);
-              }}
-            >
-              {productOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
+            {
+              <select
+                name="product"
+                value={formData.product}
+                onChange={(event) => {
+                  updateFormData(event);
+                }}
+              >
+                {productOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            }
           </FieldSection>
           <FieldSection title="Wybierz formę płatności*">
             <RadioButtons
@@ -138,7 +144,7 @@ export const FormExercise = () => {
         </MainSection>
 
         <MainSection title="DANE DO REALIZACJI ZAMÓWIENIA">
-          <FieldSection title="Imię i nazwisko">
+          <FieldSection title="Imię i nazwisko *">
             <input
               type="text"
               name="nameAndSurname"
@@ -152,7 +158,23 @@ export const FormExercise = () => {
               </p>
             )}
           </FieldSection>
-          <FieldSection title="Email">
+          <FieldSection title="Twój pseudonim *">
+            <input
+              type="text"
+              name="nickname"
+              value={formData.nickname}
+              onChange={updateFormData}
+            />
+          </FieldSection>
+          <FieldSection title="Adres do wysyłki * ">
+            <input
+              type=""
+              name="adres"
+              value={formData.adres}
+              onChange={updateFormData}
+            />
+          </FieldSection>
+          <FieldSection title="Email *">
             <input
               type="text"
               name="email"
@@ -170,6 +192,16 @@ export const FormExercise = () => {
             )}
           </FieldSection>
 
+          <FieldSection title="Numer kontaktowy * ">
+            <input
+              type="tel"
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
+              name="phone"
+              value={formData.phone}
+              onChange={updateFormData}
+            />
+          </FieldSection>
+
           <FieldSection title="Uwagi dodatkowe">
             <textarea
               name="details"
@@ -182,8 +214,38 @@ export const FormExercise = () => {
           </FieldSection>
         </MainSection>
 
-        <MainSection title="ZGODY">
-          <FieldSection title="Regulamin">
+        <MainSection title="ZAKŁADANIE KONTA">
+          <FieldSection title="Chcę założyć konto razem z zamówieniem">
+            <Checkboxes
+              list={[
+                {
+                  fieldName: 'consents',
+                  label: 'zakładam konto',
+                  isChecked: formData.consents,
+                },
+              ]}
+            />
+          </FieldSection>
+          <FieldSection title="Moje hasło">
+            <input
+              type="password"
+              name="password1"
+              value={formData.password1}
+              onChange={updateFormData}
+            />
+          </FieldSection>
+          <FieldSection title="Powtórz hasło">
+            <input
+              type="password"
+              name="password2"
+              value={formData.password2}
+              onChange={updateFormData}
+            />
+          </FieldSection>
+        </MainSection>
+
+        <MainSection title="ZGODY I NEWSLETTER">
+          <FieldSection title="Realizując zamówienie, akceptujesz regulamin naszego sklepu">
             <Checkboxes
               list={[
                 {
@@ -201,6 +263,17 @@ export const FormExercise = () => {
               }}
             />
           </FieldSection>
+          <FieldSection title="Dołącz do naszego newslettera z promocjami dla naszych klientów">
+            <Checkboxes
+              list={[
+                {
+                  fieldName: 'consents',
+                  label: 'zapisuję się na listę mailingową',
+                  isChecked: formData.consents,
+                },
+              ]}
+            />
+          </FieldSection>
         </MainSection>
 
         {!isAllRequiredFieldsFilled && (
@@ -210,9 +283,23 @@ export const FormExercise = () => {
         )}
 
         <button type="submit" disabled={!isFieldsValid}>
-          WYŚLIJ
+          SKŁADAM ZAMÓWIENIE
         </button>
       </form>
-    </div>
+      {orderId && (
+        <div className="modal-container">
+          <div className="modal">
+            <button
+              className="modal-button"
+              onClick={() => {
+                setOrderId(undefined);
+              }}
+            >
+              CLOSE
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
-};
+}

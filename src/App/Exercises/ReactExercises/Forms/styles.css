@@ -8,3 +8,11 @@
 .input-radio {
   display: block;
 }
+.modal-button {
+  width: 491px;
+  height: 56px;
+  border-radius: 8px;
+  border: 1px;
+  background-color: var(--primary);
+  color: var(--color-white);
+}
