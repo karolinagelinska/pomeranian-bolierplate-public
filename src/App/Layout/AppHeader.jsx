@@ -30,7 +30,7 @@ export function AppHeader() {
             <div className="placeholder"></div>
           </div>
           <div className="user-details">
-            <p className="name">Imię</p>
+            <p className="name">Karolina Gelińska</p>
             <p className="position">kursant</p>
           </div>
           <button

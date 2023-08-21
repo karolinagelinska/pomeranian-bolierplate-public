@@ -39,7 +39,7 @@ export function AppAside() {
             </NavLink>
           </li>
           <li>
-            <NavLink className="aside-row" to="HitTheMoleGame">
+            <NavLink className="aside-row" to="HitTheMole">
               <FAQIcon className="menu-icon" />
               Gra | kret
             </NavLink>

@@ -11,14 +11,17 @@ import {
   blockRouterMetaData as htmlBlockRouterMetaData,
 } from './view-router-data';
 import { ExerciseLinks } from './ExerciseLinks';
+import './styles.css';
 
 export function HtmlCssExercises() {
   const element = useRoutes(htmlBlockRouterData);
 
   return (
-    <div>
-      <p>HTML & CSS - lista ćwiczeń</p>
-      <GoBackLink label="Zamknij" />
+    <div className="exercises-wrapper">
+      <p>Ćwiczenia</p>
+      <div className="go-back-link">
+        <GoBackLink label="X" />
+      </div>
 
       <hr />
 

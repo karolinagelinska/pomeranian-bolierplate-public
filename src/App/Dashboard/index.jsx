@@ -17,7 +17,7 @@ export const Dashboard = () => {
       sectionTitle: ' Ćwiczenia',
       icon: <img src={edit} alt="edit icon" />,
       description: 'wszystkie wykonane ćwiczenia',
-      link: '/Exercises/Categories',
+      link: '/Exercises',
     },
     {
       sectionTitle: 'Blog',

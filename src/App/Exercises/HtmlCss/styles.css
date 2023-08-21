@@ -1,0 +1,18 @@
+.exercises-list li a {
+  text-decoration: none;
+  color: var(--color-black);
+}
+.exercises-list {
+  list-style-type: none;
+  padding: 0px;
+}
+.exercises-list li {
+  margin: 10px;
+  width: 435px;
+  height: 50px;
+  border-radius: 7px;
+  border: 0.75px solid gray;
+  background-color: var(--color-white);
+  font-size: 16px;
+  font-family: sans-serif;
+}

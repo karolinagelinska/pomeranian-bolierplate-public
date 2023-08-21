@@ -6,6 +6,7 @@ import { HtmlCssExercises, HtmlCssExerciseItem } from './HtmlCss';
 import { Categories } from './Categories';
 import { ReactExercises, ReactExercisesItem } from './ReactExercises';
 import { NotFound } from '../Components/NotFound/NotFound';
+import arrowDown from '../Images/toggle-arrow.svg';
 
 import './styles.css';
 
@@ -29,7 +30,10 @@ export function Exercises() {
 function BlockLayout() {
   return (
     <>
-      <h1>Ćwiczenia</h1>
+      <div className="page-title">
+        <img src={arrowDown} />
+        <h1>ĆWICZENIA</h1>
+      </div>
       <div className="exercise-main-container">
         <Categories />
         <Outlet />

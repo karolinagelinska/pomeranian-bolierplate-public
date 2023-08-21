@@ -46,6 +46,7 @@
   margin-bottom: 0px;
   margin-left: 0px;
 }
-.aside {
-  color: gray;
+
+.aside p {
+  color: rgb(176, 176, 176);
 }

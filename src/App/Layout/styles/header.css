@@ -52,3 +52,7 @@ header .menu .user-menu {
 header .logo {
   padding-top: 2rem;
 }
+header .menu .user-menu .user-details .position {
+  font-size: smaller;
+  color: darkgrey;
+}
