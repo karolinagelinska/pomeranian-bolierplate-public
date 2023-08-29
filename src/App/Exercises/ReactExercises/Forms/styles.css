@@ -1,0 +1,18 @@
+.select-and-input {
+  border: 1px solid #c8cbd1;
+  height: 48px;
+  width: 488px;
+  font-size: 18px;
+  color: #999999;
+}
+.input-radio {
+  display: block;
+}
+.modal-button {
+  width: 491px;
+  height: 56px;
+  border-radius: 8px;
+  border: 1px;
+  background-color: var(--primary);
+  color: var(--color-white);
+}

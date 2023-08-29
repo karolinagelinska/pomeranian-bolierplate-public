@@ -13,8 +13,10 @@ import { blockRouterMetaData as blockRouterMetaDataHitTheMoleGame } from './HitT
 import { castingAndStringsMetaData } from './CastingandStrings/router-data';
 import { jsArraysBasicsMetaData } from './JsArraysBasics/router-data';
 import { timeMetaData } from './Time/router-data';
+import { blockRouterMetaData as blockRouterMetaDataTesting } from './Testing/router-data';
 
 export const blockRouterMetaData = [
+  blockRouterMetaDataTesting,
   blockRouterMetaDataPromiseMethodsTraining,
   blockRouterMetaDataJsThis,
   blockRouterMetaDataPrototype,

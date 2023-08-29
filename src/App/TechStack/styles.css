@@ -1,0 +1,17 @@
+.page-title {
+  display: flex;
+  font-size: 18px;
+}
+.tech-stack-container {
+  width: 70%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.tech-stack-container .tech-stack-element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

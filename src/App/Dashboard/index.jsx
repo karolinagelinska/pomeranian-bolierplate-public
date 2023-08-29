@@ -11,13 +11,13 @@ export const Dashboard = () => {
       sectionTitle: 'Moje CV',
       icon: <img src={personalCard} alt="buisness card resume" />,
       description: 'podgląd cv wraz z doświadczeniem',
-      link: '/cv',
+      link: '/MyCV',
     },
     {
       sectionTitle: ' Ćwiczenia',
       icon: <img src={edit} alt="edit icon" />,
       description: 'wszystkie wykonane ćwiczenia',
-      link: '/excercise',
+      link: '/Exercises',
     },
     {
       sectionTitle: 'Blog',
@@ -43,10 +43,9 @@ export const Dashboard = () => {
       <div className="header">
         <h3 className="greeting">Hej, tu Karolina!</h3>
         <p>
-          {' '}
           Poniżej znajdziesz najważniejsze informacje na temat mojej
           działalności
-        </p>{' '}
+        </p>
       </div>
       <div className="links">
         {availableCards.map((card) => {
@@ -60,7 +59,13 @@ export const Dashboard = () => {
           );
         })}
       </div>
-      <div className="aside">O kursancie</div>
+      <div className="aside">
+        <div className="foto-container"></div>
+        <h3 className="personal-info-name">Karolina Gelińska</h3>
+        <p className="personal-info-city">Puck</p>
+        <p>e-mail: kar.gelinska@gmail.com</p>
+        <p>telefon: 535 074 885</p>
+      </div>
     </div>
   );
 };

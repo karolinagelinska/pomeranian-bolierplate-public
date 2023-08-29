@@ -6,6 +6,13 @@
 }
 
 .exercises-categories a.active {
-  background-color: var(--color-primary-blue);
-  color: var(--color-white);
+  color: #fe3756;
+  border: 0.75px solid #fe3756;
+  background-color: #ebebeb;
+}
+.page-title {
+  display: flex;
+}
+.page-title h1 {
+  font-size: 18px;
 }

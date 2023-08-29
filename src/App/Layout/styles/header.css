@@ -8,16 +8,11 @@ header {
   justify-content: space-between;
   padding-left: 1.5rem;
   padding-right: 3rem;
-  box-shadow: 0px 1px 9px 0px var(--color-grey);
+  border-bottom: 1px solid #ebebeb;
+  box-shadow: 0px 10px 60px 0px #0000000d;
 }
-header > a:first-of-type {
-  text-decoration: none;
-}
-header.header-title {
-  color: var(--color-grey);
-  font-weight: normal;
-}
-header button.settings {
+
+header .menu button.settings {
   cursor: pointer;
   border: 0px;
   background-color: transparent;
@@ -53,4 +48,11 @@ header .menu .user-menu {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+header .logo {
+  padding-top: 2rem;
+}
+header .menu .user-menu .user-details .position {
+  font-size: smaller;
+  color: darkgrey;
 }

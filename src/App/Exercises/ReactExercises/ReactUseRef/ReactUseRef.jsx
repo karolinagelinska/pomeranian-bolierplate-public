@@ -25,7 +25,7 @@ export const ReactUseRef = () => {
         {/*scroll to specific element after render*/}
 
         <div className="container--react-scroll-into-view">
-          <div ref={targetRef}></div>
+          <div ref={targetRef}>Scroll to specific element after render</div>
         </div>
       </div>
     </div>
