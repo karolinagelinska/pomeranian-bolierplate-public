@@ -13,6 +13,7 @@ import { FAQ } from './App/FAQ/Faq';
 import { HitTheMoleGame } from './App/Exercises/Js/HitTheMoleGame/HitTheMoleGame';
 import { MemoGame } from './App/Exercises/Js/MemoGame/MemoGame';
 import { FormExercise } from './App/Exercises/ReactExercises/Forms/Forms';
+import { TechStack } from './App/TechStack/TechStack';
 
 export function App() {
   return (
@@ -30,6 +31,7 @@ export function App() {
           <Route path="HitTheMole/*" element={<HitTheMoleGame />} />
           <Route path="MemoGame/*" element={<MemoGame />} />
           <Route path="Form/*" element={<FormExercise />} />
+          <Route path="TechStack/*" element={<TechStack />} />
         </Route>
       </Routes>
     </BrowserRouter>
